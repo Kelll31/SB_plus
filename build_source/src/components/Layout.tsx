@@ -57,7 +57,7 @@ export function Header() {
         <Link to="/" className="flex items-center gap-4 group">
           <div className="relative w-14 h-14 p-1 overflow-hidden flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
             <img
-              src="/logo_SB+.png"
+              src="./logo_SB+.png"
               alt="СБ+"
               className="w-full h-full object-contain"
               decoding="async"
@@ -177,7 +177,7 @@ export function Footer() {
           <Link to="/" className="flex items-center gap-4 mb-10">
             <div className="w-12 h-12 p-1">
               <img
-                src="/logo_SB+.png"
+                src="./logo_SB+.png"
                 alt="СБ+"
                 className="w-full h-full object-contain"
                 loading="lazy"
