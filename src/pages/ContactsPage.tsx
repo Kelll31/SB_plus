@@ -6,7 +6,7 @@ export function ContactsPage() {
   return (
     <div className="pt-24 md:pt-32 pb-12 md:pb-16">
       <Helmet>
-        <title>Контакты СБ+ в Серпухове — Адрес, телефон, карта проезда</title>
+        <title>Контакты СБ+ в Серпухове - Адрес, телефон, карта проезда</title>
         <meta name="description" content="Свяжитесь с нами для консультации по системам безопасности. Наш адрес: Серпухов, ул. Водонапорная, 36. Телефон: 8(4967)760-444. Работаем Пн-Пт с 9:00 до 18:00." />
       </Helmet>
       <div className="max-w-7xl mx-auto px-6">
@@ -75,8 +75,8 @@ export function ContactsPage() {
                 <div>
                   <h3 className="text-[10px] md:text-sm font-bold uppercase tracking-widest mb-2">Режим работы</h3>
                   <p className="text-industrial-text-muted text-xs md:text-sm">
-                    Пн — Пт: 09:00 – 18:00<br />
-                    Сб — Вс: Выходной
+                    Пн - Пт: 09:00 – 18:00<br />
+                    Сб - Вс: Выходной
                   </p>
                 </div>
               </div>

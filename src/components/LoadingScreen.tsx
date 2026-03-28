@@ -63,9 +63,9 @@ export function LoadingScreen() {
           className="mb-12 relative"
         >
           <div className="w-24 h-24 p-2 relative z-10">
-            <img 
-              src="/src/images/logo_SB+.png" 
-              alt="СБ+" 
+            <img
+              src="/logo_SB+.png"
+              alt="СБ+"
               className="w-full h-full object-contain"
               decoding="async"
             />
