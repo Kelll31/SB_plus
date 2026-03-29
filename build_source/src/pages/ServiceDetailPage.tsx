@@ -40,7 +40,7 @@ export function ServiceDetailPage() {
               <span className="mono-label mb-0">Услуга СБ+</span>
             </div>
             
-            <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-none mb-6">
               {service.title}
             </h1>
             

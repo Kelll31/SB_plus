@@ -56,7 +56,7 @@
   }
 
   .section-title {
-    @apply text-4xl md:text-6xl font-black mb-12 uppercase tracking-tighter leading-none;
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black mb-12 uppercase tracking-tighter leading-none;
   }
   
   .card-industrial {

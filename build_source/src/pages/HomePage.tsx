@@ -83,7 +83,7 @@ export function HomePage() {
             className="max-w-4xl"
           >
             <span className="mono-label">Решения промышленной безопасности</span>
-            <h1 className="text-5xl md:text-8xl font-black uppercase tracking-[-0.04em] leading-[0.9] mb-8">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black uppercase tracking-[-0.04em] leading-[0.9] mb-8">
               Защита <br />
               <span className="text-industrial-accent">Промышленных</span> <br />
               Активов
@@ -120,7 +120,7 @@ export function HomePage() {
       {/* Stats Section */}
       <section className="bg-industrial-gray py-16 md:py-20 relative overflow-hidden">
         <div className="max-w-[1600px] mx-auto px-6">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 items-start">
             {stats.map((stat, idx) => (
               <div key={idx} className="relative group">
                 <div className="absolute -left-4 top-0 w-px h-full bg-border-subtle group-hover:bg-industrial-accent transition-colors duration-500" />
