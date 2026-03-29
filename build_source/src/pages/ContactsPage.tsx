@@ -163,8 +163,7 @@ export function ContactsPage() {
                 <div>
                   <h3 className="text-[10px] md:text-sm font-bold uppercase tracking-widest mb-2">Телефоны</h3>
                   <p className="text-industrial-text-muted text-xs md:text-sm font-bold text-industrial-text">
-                    8(4967)760-444 (Телефон/факс)<br />
-                    8(4967)355-692 (Телефон)
+                    8(4967)760-444 (Телефон/факс)
                   </p>
                 </div>
               </div>

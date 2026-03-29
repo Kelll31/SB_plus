@@ -226,7 +226,6 @@ export function Footer() {
               <Phone className="w-5 h-5 text-industrial-accent shrink-0" />
               <div className="font-mono">
                 <p className="text-industrial-text">8(4967)760-444</p>
-                <p className="text-industrial-text-muted">8(4967)355-692</p>
               </div>
             </li>
             <li className="flex gap-4">
