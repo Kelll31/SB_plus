@@ -1,0 +1,14 @@
+.env
+.env.*
+!.env.example
+.deploy/
+artifacts/
+__pycache__/
+build_source/public/api/config.php
+build_source/public/api/storage/*
+!build_source/public/api/storage/.htaccess
+build_source/dist/
+node_modules/
+api/config.php
+api/storage/*
+!api/storage/.htaccess

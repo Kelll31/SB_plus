@@ -8,6 +8,7 @@ export default defineConfig(({mode}) => {
     base: './',
     plugins: [react(), tailwindcss()],
     resolve: {
+      dedupe: ['three'],
       alias: {
         '@': path.resolve(__dirname, '.'),
       },

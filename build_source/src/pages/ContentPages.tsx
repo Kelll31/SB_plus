@@ -1,0 +1,7 @@
+import { Link } from 'react-router-dom';
+import { ArrowUpRight } from 'lucide-react';
+import { PageHeading, Seo } from '../components/Shared';
+import { EMAIL } from '../components/Layout';
+
+export function NotFoundPage() { return <><Seo title="Страница не найдена" description="Страница не найдена. Перейдите к услугам компании СБ+."/><div className="container empty-state not-found"><span className="error-code">404</span><h1>Здесь пока ничего нет.</h1><p>Возможно, адрес изменился. Вернёмся к тому, что важно?</p><Link to="/" className="button">На главную<ArrowUpRight size={18}/></Link></div></>; }
+export function LegalPage() { return <><Seo title="Информация о компании" description="Информация о сайте и компании СБ+."/><PageHeading eyebrow="Информация" title="Информация о компании"/><section className="section"><div className="container legal-content"><h2>ООО «СБ+»</h2><p>Компания организована в октябре 2003 года. Основное направление — системы безопасности и контроля объектов.</p><h2>Контакты</h2><p>Московская область, г. Серпухов, ул. Водонапорная, д. 36, офис 223.<br/>Телефон: +7 (4967) 760-444.<br/>Электронная почта: <a href={`mailto:${EMAIL}`}>{EMAIL}</a>.</p><h2>Документы и реквизиты</h2><p>Актуальные реквизиты для заключения договора и документы по конкретному виду работ можно запросить у компании. Опубликованные архивные материалы отмечены отдельно.</p><h2>Информация на сайте</h2><p>Состав, сроки и стоимость работ определяются после обсуждения объекта и закрепляются в договоре.</p></div></section></>; }

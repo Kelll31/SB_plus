@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "revision": 0,
+  "licenses": [
+    { "id": "archive-7", "title": "Объединение инженеров строителей", "description": "Свидетельство, опубликованное на прежнем сайте компании.", "number": "", "file": "images/l7.jpg", "archived": true, "published": true },
+    { "id": "archive-6", "title": "Объединение инженеров проектировщиков", "description": "Свидетельство, опубликованное на прежнем сайте компании.", "number": "", "file": "images/l6.jpg", "archived": true, "published": true },
+    { "id": "archive-8", "title": "Перечень видов работ ООО «Полигон»", "description": "Документ из архива прежнего сайта. Актуальность уточняйте у компании.", "number": "", "file": "images/l8.jpg", "archived": true, "published": true },
+    { "id": "archive-5", "title": "Свидетельство проектной организации", "description": "Дополнительный документ из архива компании.", "number": "", "file": "images/l5.jpg", "archived": true, "published": true },
+    { "id": "archive-9", "title": "Перечень видов работ ООО «Полигон»", "description": "Дополнительный документ из архива компании.", "number": "", "file": "images/l9.jpg", "archived": true, "published": true }
+  ],
+  "posts": []
+}

@@ -1,260 +1,28 @@
-import { Link, useLocation } from "react-router-dom";
-import { Shield, Menu, X, Phone, Mail, MapPin, Sun, Moon } from "lucide-react";
-import { useState, useEffect, ReactNode } from "react";
-import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
-import { useTheme } from "../context/ThemeContext";
-
-function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
-
-export function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const location = useLocation();
-  const { theme, toggleTheme } = useTheme();
-
+import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
+import { ScrollExperience } from './ScrollExperience';
+import { ArrowUpRight, Menu, X, Phone, MapPin, ArrowUp } from 'lucide-react';
+export const PHONE = '+7 (926) 580-51-79';
+export const PHONE_HREF = 'tel:+79265805179';
+export const EMAIL = 'poligonsb@mail.ru';
+const navigation = [['Услуги', '/services'], ['О компании', '/about'], ['Лицензии', '/documents'], ['Контакты', '/contacts']];
+export function Brand() { return <Link to="/" className="brand" aria-label="СБ+ — на главную"><img src="./logo_SB+.png" alt="" width="46" height="46" /><span className="brand-name">СБ<span>+</span><small>Системы безопасности</small></span></Link>; }
+function Header() {
+  const [open, setOpen] = useState(false); const { pathname } = useLocation(); const toggleRef = useRef<HTMLButtonElement>(null);
+  const [overScene, setOverScene] = useState(pathname === '/');
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
-    
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setIsMenuOpen(false);
-    };
-    window.addEventListener("keydown", handleEscape);
-
-    if (isMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("keydown", handleEscape);
-      document.body.style.overflow = "unset";
-    };
-  }, [isMenuOpen]);
-
-  const navLinks = [
-    { name: "Главная", href: "/" },
-    { name: "Услуги", href: "/services" },
-    { name: "О компании", href: "/about" },
-    { name: "Контакты", href: "/contacts" },
-  ];
-
-  return (
-    <header
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
-        isScrolled 
-          ? "bg-industrial-dark/90 backdrop-blur-xl py-4 border-b border-border-subtle" 
-          : "bg-transparent py-8 border-b border-transparent"
-      )}
-    >
-      <div className="max-w-[1600px] mx-auto px-6 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-4 group">
-          <div className="relative w-14 h-14 p-1 overflow-hidden flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
-            <img
-              src="./logo_SB+.png"
-              alt="СБ+"
-              className="w-full h-full object-contain"
-              decoding="async"
-              onError={(e) => {
-                e.currentTarget.style.display = 'none';
-                e.currentTarget.parentElement?.classList.add('bg-industrial-accent');
-              }}
-            />
-          </div>
-          <div className="flex flex-col">
-            <span className="text-3xl font-black tracking-[-0.05em] uppercase text-industrial-text leading-none">СБ+</span>
-            <div className="flex items-center gap-2 mt-1">
-              <span className="w-2 h-2 bg-industrial-accent animate-pulse rounded-full" />
-              <span className="font-mono text-[10px] text-industrial-accent font-bold uppercase tracking-[0.3em]">Система под защитой</span>
-            </div>
-          </div>
-        </Link>
-
-        {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-12" aria-label="Основная навигация">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              to={link.href}
-              aria-current={location.pathname === link.href ? "page" : undefined}
-              className={cn(
-                "font-mono text-[13px] uppercase tracking-[0.3em] transition-all duration-300 relative py-2",
-                location.pathname === link.href 
-                  ? "text-industrial-accent after:absolute after:bottom-0 after:left-0 after:w-full after:h-px after:bg-industrial-accent" 
-                  : "text-industrial-text/60 hover:text-industrial-text"
-              )}
-            >
-              {link.name}
-            </Link>
-          ))}
-          <div className="h-4 w-px bg-border-subtle mx-2" />
-          <a href="tel:84967760444" className="font-mono text-[13px] text-industrial-text hover:text-industrial-accent transition-colors">
-            8(4967)760-444
-          </a>
-          
-          <button
-            onClick={toggleTheme}
-            className="p-2 rounded-none border border-border-subtle hover:bg-industrial-gray-light transition-colors text-industrial-text"
-            aria-label="Toggle theme"
-          >
-            {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
-          </button>
-        </nav>
-
-        {/* Mobile Toggle */}
-        <div className="flex items-center gap-4 lg:hidden">
-          <button
-            onClick={toggleTheme}
-            className="p-2 rounded-none border border-border-subtle hover:bg-industrial-gray-light transition-colors text-industrial-text"
-            aria-label="Toggle theme"
-          >
-            {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
-          </button>
-          <button 
-            className="text-industrial-text p-2 hover:bg-industrial-gray-light transition-colors"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label={isMenuOpen ? "Закрыть меню" : "Открыть меню"}
-            aria-expanded={isMenuOpen}
-            aria-controls="mobile-menu"
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      <div 
-        id="mobile-menu"
-        className={cn(
-          "lg:hidden absolute top-full left-0 right-0 bg-industrial-dark/95 backdrop-blur-2xl border-b border-border-subtle p-8 flex flex-col gap-2 transition-all duration-300 origin-top",
-          isMenuOpen ? "opacity-100 scale-y-100 visible" : "opacity-0 scale-y-95 invisible pointer-events-none"
-        )}
-        role="dialog"
-        aria-modal="true"
-        aria-label="Мобильное меню"
-      >
-        <nav aria-label="Мобильная навигация">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              to={link.href}
-              aria-current={location.pathname === link.href ? "page" : undefined}
-              className={cn(
-                "font-mono text-sm uppercase tracking-[0.3em] py-5 border-b border-border-subtle transition-colors block",
-                location.pathname === link.href ? "text-industrial-accent" : "text-industrial-text"
-              )}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {link.name}
-            </Link>
-          ))}
-        </nav>
-        <div className="flex flex-col gap-6 pt-8">
-          <a href="tel:84967760444" className="flex items-center gap-4 text-industrial-accent font-mono text-sm uppercase tracking-widest">
-            <Phone size={18} /> 8(4967)760-444
-          </a>
-          <a href="mailto:poligonsb@mail.ru" className="flex items-center gap-4 text-industrial-text-muted font-mono text-sm uppercase tracking-widest">
-            <Mail size={18} /> poligonsb@mail.ru
-          </a>
-        </div>
-      </div>
-    </header>
-  );
+    if (pathname !== '/') { setOverScene(false); return; }
+    const scene = document.querySelector('.facility-story');
+    if (!scene) { setOverScene(false); return; }
+    const update = () => { const rect = scene.getBoundingClientRect(); setOverScene(rect.top <= 90 && rect.bottom > 90); };
+    update(); window.addEventListener('scroll', update, { passive: true }); window.addEventListener('resize', update);
+    return () => { window.removeEventListener('scroll', update); window.removeEventListener('resize', update); };
+  }, [pathname]);
+  useEffect(() => { setOpen(false); }, [pathname]);
+  useEffect(() => { if (!open) return; const listener = (e: KeyboardEvent) => { if (e.key === 'Escape') { setOpen(false); toggleRef.current?.focus(); } }; document.addEventListener('keydown', listener); return () => document.removeEventListener('keydown', listener); }, [open]);
+  return <><div className={`utility-bar${pathname === '/' ? ' utility-hidden' : ''}`}><div className="container utility-inner"><span><MapPin size={13} /> Серпухов · Работаем с 2003 года</span><a href={`mailto:${EMAIL}`}>{EMAIL}<ArrowUpRight size={12} /></a></div></div>
+    <header className={`site-header${pathname === '/' ? ' header-home' : ''}${overScene && !open ? ' header-over-scene' : ''}`}><div className="container header-inner"><Brand /><nav className="desktop-nav" aria-label="Основная навигация">{navigation.map(([label, path]) => <NavLink key={path} to={path}>{label}</NavLink>)}</nav><a className="header-phone" href={PHONE_HREF}>{PHONE}<small>Обсудим вашу задачу</small></a><button className="menu-toggle icon-button" ref={toggleRef} onClick={() => setOpen(!open)} aria-expanded={open} aria-controls="mobile-menu" aria-label={open ? 'Закрыть меню' : 'Открыть меню'}>{open ? <X /> : <Menu />}</button></div>
+    {open && <nav id="mobile-menu" className="mobile-nav" aria-label="Мобильная навигация">{navigation.map(([label, path]) => <NavLink key={path} to={path}>{label}<ArrowUpRight size={18} /></NavLink>)}<a href={PHONE_HREF}><Phone size={18}/>{PHONE}</a></nav>}</header></>;
 }
-
-export function Footer() {
-  return (
-    <footer className="bg-industrial-dark text-industrial-text pt-24 pb-12 border-t border-border-subtle relative overflow-hidden">
-      <div className="grid-accent" />
-      <div className="max-w-[1600px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16 relative z-10">
-        <div className="lg:col-span-5">
-          <Link to="/" className="flex items-center gap-4 mb-10">
-            <div className="w-12 h-12 p-1">
-              <img
-                src="./logo_SB+.png"
-                alt="СБ+"
-                className="w-full h-full object-contain"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-3xl font-black tracking-tighter uppercase text-industrial-text">СБ+</span>
-              <span className="font-mono text-[10px] text-industrial-accent font-bold uppercase tracking-[0.3em]">Промышленная безопасность</span>
-            </div>
-          </Link>
-          <p className="text-industrial-text-muted max-w-md mb-10 leading-relaxed text-sm">
-            Профессиональное проектирование, монтаж и техническое обслуживание систем безопасности на сложных индустриальных объектах. Работаем с 2003 года по всей России.
-          </p>
-          <div className="flex items-center gap-6">
-            <div className="flex flex-col">
-              <span className="font-mono text-[10px] text-industrial-accent uppercase tracking-widest mb-1">Статус</span>
-              <span className="text-xs font-bold uppercase tracking-widest">Сертифицированный партнер</span>
-            </div>
-            <div className="w-px h-8 bg-border-subtle" />
-            <div className="flex flex-col">
-              <span className="font-mono text-[10px] text-industrial-accent uppercase tracking-widest mb-1">Регион</span>
-              <span className="text-xs font-bold uppercase tracking-widest">Российская Федерация</span>
-            </div>
-          </div>
-        </div>
-
-        <div className="lg:col-span-3">
-          <span className="mono-label">Навигация</span>
-          <ul className="space-y-4 text-sm font-bold uppercase tracking-widest">
-            <li><Link to="/" aria-current={location.pathname === "/" ? "page" : undefined} className="hover:text-industrial-accent transition-colors">Главная</Link></li>
-            <li><Link to="/services" aria-current={location.pathname === "/services" ? "page" : undefined} className="hover:text-industrial-accent transition-colors">Услуги</Link></li>
-            <li><Link to="/about" aria-current={location.pathname === "/about" ? "page" : undefined} className="hover:text-industrial-accent transition-colors">О компании</Link></li>
-            <li><Link to="/contacts" aria-current={location.pathname === "/contacts" ? "page" : undefined} className="hover:text-industrial-accent transition-colors">Контакты</Link></li>
-          </ul>
-        </div>
-
-        <div className="lg:col-span-4">
-          <span className="mono-label">Штаб-квартира</span>
-          <ul className="space-y-6 text-sm">
-            <li className="flex gap-4">
-              <MapPin className="w-5 h-5 text-industrial-accent shrink-0" />
-              <span className="text-industrial-text-muted leading-relaxed">г. Серпухов, ул. Водонапорная, д. 36, офис 223</span>
-            </li>
-            <li className="flex gap-4">
-              <Phone className="w-5 h-5 text-industrial-accent shrink-0" />
-              <div className="font-mono">
-                <p className="text-industrial-text">8(4967)760-444</p>
-              </div>
-            </li>
-            <li className="flex gap-4">
-              <Mail className="w-5 h-5 text-industrial-accent shrink-0" />
-              <span className="font-mono text-industrial-accent">poligonsb@mail.ru</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-      
-      <div className="max-w-[1600px] mx-auto px-6 mt-24 pt-12 border-t border-border-subtle flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] font-mono text-industrial-text-muted uppercase tracking-[0.4em]">
-        <p>© {new Date().getFullYear()} ООО «СБ+». Все права защищены.</p>
-        <div className="flex gap-12">
-          <Link to="/privacy" className="hover:text-industrial-text transition-colors">Политика конфиденциальности</Link>
-          <Link to="/terms" className="hover:text-industrial-text transition-colors">Юридическая информация</Link>
-        </div>
-      </div>
-    </footer>
-  );
-}
-
-export function Layout({ children }: { children: ReactNode }) {
-  return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
-      <main className="flex-grow">
-        {children}
-      </main>
-      <Footer />
-    </div>
-  );
-}
+function Footer() { return <footer className="site-footer"><div className="container"><div className="footer-main"><div><Brand /><p className="footer-description">Инженерные решения для безопасности<br />людей, объектов и вашего бизнеса.</p><span className="footer-since"><span className="status-dot" /> Работаем с октября 2003 года</span></div><div><span className="footer-label">Навигация</span>{navigation.map(([label, path]) => <Link className="footer-link" key={path} to={path}>{label}</Link>)}</div><div><span className="footer-label">На связи</span><a className="footer-phone" href={PHONE_HREF}>{PHONE}</a><a className="footer-link" href="tel:+74967760444">+7 (4967) 760-444</a><a className="footer-email" href={`mailto:${EMAIL}`}>{EMAIL}<ArrowUpRight size={16}/></a><address>Московская область, г. Серпухов,<br />ул. Водонапорная, 36, офис 223</address></div></div><div className="footer-bottom"><span>© {new Date().getFullYear()} ООО «СБ+»</span><Link to="/privacy">Конфиденциальность</Link><Link to="/terms">Информация о компании</Link><button onClick={() => window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' })}>Наверх <ArrowUp size={15}/></button></div></div></footer>; }
+export function Layout({ children }: { children: ReactNode }) { return <><a className="skip-link" href="#main-content" onClick={e=>{e.preventDefault();document.getElementById('main-content')?.focus();document.getElementById('main-content')?.scrollIntoView();}}>Перейти к содержимому</a><Header /><ScrollExperience>{children}</ScrollExperience><Footer /></>; }

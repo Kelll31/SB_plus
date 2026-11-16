@@ -1,0 +1,52 @@
+/* The model owns the screen; camera flight replaces the rotating tabletop view. */
+.facility-story{height:560svh;background:#101f1c}
+.facility-stage{background:radial-gradient(ellipse at 74% 43%,#40574955,transparent 70%),#101f1c}
+.facility-stage:before{opacity:.35}
+.container.facility-inner{max-width:1600px;padding-inline:40px}
+.facility-layout{grid-template-columns:minmax(265px,.69fr) minmax(0,2fr);gap:12px}
+.facility-copy h1{font-size:clamp(38px,3.9vw,60px);line-height:1.05}
+.facility-copy{padding-block:22px}
+.facility-overline{font-size:8px;margin-bottom:20px;letter-spacing:.06em}
+.facility-chapter-copy{margin-top:27px;max-width:300px}
+.facility-chapter h2{font-size:22px}.facility-chapter p{font-size:12px;line-height:1.85}
+.facility-copy .facility-cta{font-size:11px;gap:18px;padding-inline:18px}
+.facility-figure{padding:22px 0 16px}
+.facility-viewer{margin-inline:-10px}
+.facility-model-toolbar{margin-left:20px}
+.facility-model-tag{display:none}
+.facility-figure figcaption{padding-left:20px}
+.facility-demo-badge{position:absolute;top:18px;left:28px;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:#93ac9c;z-index:1;pointer-events:none}
+.facility-compass{right:20px;top:16px}
+.facility-readout{position:absolute;bottom:23px;left:28px;min-width:185px;padding:16px 19px;border:1px solid #8fb29f40;border-left:2px solid #83cbbf;background:#102721ee;box-shadow:0 12px 35px #07191240;border-radius:3px;pointer-events:none}
+.facility-readout-label{font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:#b4cdbd}
+.facility-readout-value{display:flex;gap:8px;align-items:baseline;margin-top:10px;color:#c8e5d6}
+.facility-readout-value strong{font-size:36px;line-height:1;letter-spacing:-.035em;font-weight:500;font-variant-numeric:tabular-nums;min-width:44px}
+.facility-readout-value>span{font-size:10px;color:#93b7a8}
+.facility-readout p{font-size:9px;color:#a8c0b2;line-height:1.7;margin-top:9px}
+.facility-readout small{display:block;margin-top:10px;font-size:7px;color:#8ca395}
+.facility-level-bar{height:3px;background:#527c6d50;margin-top:14px;overflow:hidden}.facility-level-bar>span{display:block;height:100%;background:#8ad3c6;transform-origin:left}
+.facility-readout-3{border-left-color:#ddb77b}.facility-readout-3 .facility-readout-value{color:#e7c891}
+.facility-timeline{grid-template-columns:repeat(6,minmax(0,1fr))}
+.facility-timeline button{gap:9px;padding-inline:13px;font-size:10px;line-height:1.4}.facility-timeline button>svg{width:12px}
+.container.facility-static-chapters{grid-template-columns:repeat(3,minmax(0,1fr))}
+.facility-still{height:auto}
+@media(min-width:1650px){.facility-layout{grid-template-columns:minmax(300px,.65fr) minmax(0,2fr)}.facility-copy h1{font-size:65px}.facility-chapter-copy{max-width:320px}}
+@media(max-width:1100px){.container.facility-inner{padding-inline:28px}.facility-layout{grid-template-columns:260px minmax(0,1fr);gap:0}.facility-copy h1{font-size:42px}.facility-chapter-copy{max-width:245px}.facility-chapter h2{font-size:20px}.facility-chapter p{font-size:11px}.facility-timeline button{font-size:9px;gap:6px;padding-inline:9px}.facility-timeline button>svg{display:none}.facility-readout{left:18px;bottom:18px;padding:13px 14px;min-width:160px}.facility-readout-value strong{font-size:30px}.facility-demo-badge{left:18px}}
+@media(min-width:701px) and (max-width:850px){.facility-layout{grid-template-columns:240px minmax(0,1fr)}.facility-copy h1{font-size:39px}.facility-chapter-copy{max-width:220px}.facility-readout{min-width:150px}.facility-figure figcaption{font-size:8px}}
+@media(max-width:700px){
+  .facility-story{height:460svh}.facility-still{height:auto}.container.facility-inner{padding:12px 20px}
+  .facility-layout{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr)}
+  .facility-copy{padding-top:15px;padding-bottom:0}.facility-copy h1{font-size:clamp(28px,8vw,38px);line-height:1.04}
+  .facility-chapter-copy{max-width:100%;margin-top:12px}.facility-chapter h2{font-size:17px;margin-bottom:6px}.facility-chapter p{font-size:10px;line-height:1.7}.facility-copy .facility-cta{min-height:34px;margin-top:11px;padding:8px 13px;font-size:9px}
+  .facility-figure{padding:9px 0 7px}.facility-viewer{margin-inline:-16px}.facility-model-toolbar{margin-left:0;font-size:7px}.facility-demo-badge{top:10px;left:15px;font-size:6px}.facility-compass{right:15px;top:7px}
+  .facility-figure figcaption{padding-left:0;font-size:7px}
+  .facility-readout{bottom:9px;left:14px;min-width:125px;padding:9px 11px;background:#102721ed}.facility-readout-label{font-size:6px}.facility-readout-value{margin-top:6px;gap:5px}.facility-readout-value strong{font-size:25px}.facility-readout-value>span{font-size:8px}.facility-readout p{font-size:7px;line-height:1.5;margin-top:5px}.facility-readout small{font-size:6px;margin-top:5px}.facility-level-bar{margin-top:8px;height:2px}
+  .facility-timeline{display:flex;overflow-x:auto;scrollbar-width:thin;scrollbar-color:#7e9d6b transparent;position:relative;flex-shrink:0}.facility-timeline button{flex:0 0 95px;min-height:47px;font-size:8px;gap:5px;padding:7px 10px;justify-content:flex-start}.facility-timeline button:first-child{padding-left:7px}.facility-timeline button:last-child{padding-right:7px}.facility-bottom{padding-top:8px}
+  .container.facility-static-chapters{grid-template-columns:1fr 1fr}.facility-still .facility-layout{grid-template-rows:auto 340px}
+}
+@media(max-height:720px) and (max-width:700px){.facility-copy h1{font-size:27px}.facility-copy{padding-top:11px}.facility-chapter-copy{margin-top:10px}.facility-chapter p{font-size:9px}.facility-copy .facility-cta{display:none}.facility-readout{padding:6px 9px;min-width:112px;bottom:7px}.facility-readout-value strong{font-size:22px}.facility-readout p{font-size:6px}.facility-readout small{font-size:5px}.facility-readout-value{margin-top:5px}}
+@media(prefers-reduced-motion:reduce){.facility-story{height:auto}}
+
+@media(max-width:700px){.facility-readout-5{min-width:0;display:flex;align-items:center;gap:7px;padding:7px 10px;bottom:6px}.facility-readout-5 .facility-readout-label,.facility-readout-5 p,.facility-readout-5 small{display:none}.facility-readout-5 .facility-readout-value{margin:0}.facility-readout-5 .facility-readout-value strong{font-size:21px;min-width:0}}
+
+.facility-demo-badge{padding:5px 8px;background:#102721d9;border:1px solid #96b69f20;border-radius:2px;color:#b4cbb9}
